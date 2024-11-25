@@ -3,20 +3,20 @@ pipeline {
   tools {
     maven 'Maven 3.9.9'
   }
-  states {
-    state('build') {
+  stages {
+    stage('build') {
       steps {
         echo 'compiling sysfoo app...'
         sh 'mvn compile'
       }
     }
-    state('test') {
+    stage('test') {
       steps {
         echo 'running unit tests...'
         sh 'mvn clean test'
       }
     }
-    state('package') {
+    stage('package') {
       steps {
         echo 'packaging the app...'
         sh 'mvn package -DskipTests'
